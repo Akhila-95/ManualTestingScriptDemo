@@ -29,7 +29,8 @@ public class navigationProccess extends baseClass {
 	    	 }
 	    //selected a random product 
 	    	 productListingPage plp = new productListingPage(driver);
-	   	     plp.selectProductRandom(driver);	    	         
+	   	     plp.selectProductRandom(driver);
+	   	     
 	   	     List<WebElement> productName1 = driver.findElements(By.xpath("//h1[@class='product-name hidden-sm-down']"));
 	   	     if(productName1.size()>0) {
 	   	    	 WebElement productName = driver.findElement(By.xpath("//h1[@class='product-name hidden-sm-down']"));
@@ -60,7 +61,7 @@ public class navigationProccess extends baseClass {
 			          size s = new size();			        
 			          s.selectSize(driver);
 		    		 }
-
+	   		 Thread.sleep(1000);
 	   		 if(minicartcountList.size()>0) {
 		          WebElement minicartcountafteradding = driver.findElement(By.xpath("//span[@class ='minicart-quantity ml-1']"));
 		          String countOfMinicartafteradding = minicartcountafteradding.getText();

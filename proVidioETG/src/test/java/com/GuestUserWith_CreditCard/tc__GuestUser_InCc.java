@@ -61,6 +61,11 @@ public class tc__GuestUser_InCc extends baseClass {
             }
   		 }
   		
+  		List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
+ 		 if( pdpPage.size()>0) {			 
+		          size s = new size();		          
+		          s.selectSize(driver);
+	    		 }
   		 if(minicartcountList.size()>0) {
 		          WebElement minicartcountafteradding = driver.findElement(By.xpath("//span[@class ='minicart-quantity ml-1']"));
 		          String countOfMinicartafteradding = minicartcountafteradding.getText();
@@ -80,18 +85,10 @@ public class tc__GuestUser_InCc extends baseClass {
 				        }
 	        
 	    		 }
-			      
-  		 List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
-  		 if( pdpPage.size()>0) {			 
-		          size s = new size();		          
-		          s.selectSize(driver);
-	    		 }
-        
+
 			     tc__CheckOutProcess cp = new tc__CheckOutProcess();			     
 			     cp.checkoutprocess();
-			     
-			    
-			     
+
 			     //Payment process		     
 			     tc__CreditCardPaymentProcess cc = new tc__CreditCardPaymentProcess();			     
 			     cc.paymentByCreditCard();

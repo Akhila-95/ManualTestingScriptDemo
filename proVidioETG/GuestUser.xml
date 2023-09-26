@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ProvidioTestcases">
+
+  <!--  <listeners>
+		<listener class-name="com.providio.ExtentReports.ExtentReporterNG" />
+	</listeners> -->
+  <test thread-count="5" name="Automation" preserve-order="true">
+ 	<!--  
+   <classes>
+  
+   				   			 			
+  			<class name= "com.GuestUserWith_GcAndCC.tc__simpleProduct_InCcAndGc"/>	
+  			<class name= "com.GuestUserWith_GcAndPaypal.tc__VariationProductForGuestUser_InGcAndPaypal"/>	
+  			
+   			<class name= "com.GuestUserWith_GiftCard.tc__OrderByGc_GuestUser"/>	 			 
+   			<class name= "com.GuestUserWith_Minicart_Paypal.tc__BundleProductForGuestUser_InMC_Paypal"/>	  			
+   			<class name= "com.GuestUserWith_ViewCart_Paypal.tc__SimpleProductsAndBundle_Gc_InVC_Paypal"/>
+   			<class name= "com.GuestUserWith_CreditCard.tc__BundleProductForGuestUser_CC"/> 			
+   			<class name= "com.GuestUserWith_CreditCard.tc__OnlyGiftCards"/>
+   		
+   </classes>
+  -->
+  <packages>	
+  			
+  				<package name="com.GuestUserWith_CreditCard"></package>
+  				<package name="com.GuestUserWith_GcAndCC"></package> 				
+  				<package name="com.GuestUserWith_GcAndPaypal"></package>		
+  				<package name="com.GuestUserWith_Minicart_Paypal"></package>
+  				<package name="com.GuestUserWith_ViewCart_Paypal"></package>
+  				<package name="com.GuestUserWith_Checkout_Paypal"></package>
+  				
+ 
+  </packages>
+   </test> 
+  
+</suite> <!-- 
+
+ProvidioTestcases -->
+

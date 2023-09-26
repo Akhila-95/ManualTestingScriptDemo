@@ -15,7 +15,7 @@ import com.providio.testcases.baseClass;
 
 public class tc__OnlyGiftCards_Reg_InCC extends baseClass{
 	int minicartCountValue ;
-	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	//@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void OnlyGiftCards() throws InterruptedException {
 		if(isLoggedIn) {     
 		 

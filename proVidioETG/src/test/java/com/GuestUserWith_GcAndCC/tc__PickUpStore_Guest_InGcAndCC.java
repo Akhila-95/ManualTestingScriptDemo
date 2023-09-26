@@ -28,7 +28,7 @@ public class  tc__PickUpStore_Guest_InGcAndCC extends baseClass {
 	    	 List<WebElement> findAStore = driver.findElements(By.xpath("//span[@class='header-store-name']"));
 	    	 if(findAStore.size()>0) {
 	    	
-	    		 test.info("Cybersource payment is activated so Bopis are activated");
+	    		 test.info("Bopis will available Stripe and Cybersource payment");
 	    		 homePage hp = new homePage(driver);
 	    		 hp.findastore(driver);
 	    		 test.info("Clicked on Find a store");
@@ -37,7 +37,7 @@ public class  tc__PickUpStore_Guest_InGcAndCC extends baseClass {
 	    		 JavascriptExecutor js = (JavascriptExecutor) driver;
 	    	     js.executeScript("window.scrollBy(0,500)", "");
 	    	     
-	    	     hp.clickCommerceCloud(driver);
+	    	     hp.selectStore(driver);
 	    	     Thread.sleep(1000);
 	    	     
 	    	   //selecting mens-pants category

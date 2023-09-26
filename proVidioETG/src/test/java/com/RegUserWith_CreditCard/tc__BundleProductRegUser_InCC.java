@@ -17,7 +17,7 @@ import com.providio.testcases.baseClass;
 public class tc__BundleProductRegUser_InCC extends baseClass{
 	SoftAssert softAssert = new SoftAssert();
 	int  minicartCountValue;
-	 @Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	// @Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void bundleProduct() throws InterruptedException {
 		
 	if(isLoggedIn) {

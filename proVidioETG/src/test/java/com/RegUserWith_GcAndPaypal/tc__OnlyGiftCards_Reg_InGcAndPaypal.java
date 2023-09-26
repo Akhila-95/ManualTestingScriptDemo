@@ -60,9 +60,9 @@ public class tc__OnlyGiftCards_Reg_InGcAndPaypal extends baseClass{
 				 tc__CheckOutProcess cp = new tc__CheckOutProcess();				     
 			     cp.checkoutprocess();
 			     
-			   //semi gc and cc 
-				 Gc__CC_Paypal gCandCC = new Gc__CC_Paypal();
-				 gCandCC.paymentProccessByGCandCC(driver);
+			   //semi gc and paypal
+			     Gc__CC_Paypal gcAndPaypal = new Gc__CC_Paypal();
+				  gcAndPaypal.paymentProccessByGCandPaypal();
 		}else {
 		   	 Assert.fail("User not logged in");
 		   }

@@ -28,15 +28,21 @@ public class tc__BySearchingProduct_Reg_InGcAndPaypal extends baseClass {
 
 		if(isLoggedIn) {      
 
-        	//searching a product 
-            homePage homepage = new homePage(driver);
-            homepage.clickOnSearchBar(this.searchBar);
-            test.info("searched a product " + this.searchBar);
-            
-            //clicked on searched product
-            homepage.clickOnSearchedProduct();
-            test.info("clicked on searched product");
-            
+			List<WebElement> searchBar = driver.findElements(By.xpath("//input[@name='q']"));
+			if(searchBar.size()>0) {
+				WebElement searchBarDisplay = driver.findElement(By.xpath("//input[@name='q']"));
+				if(searchBarDisplay.isDisplayed()) {
+		        	//searching a product 
+		            homePage homepage = new homePage(driver);
+		            homepage.clickOnSearchBar(this.searchBar);
+		           test.info("searched a product " + this.searchBar);
+		            
+		            //clicked on searched product
+		            homepage.clickOnSearchedProduct();
+		            test.info("clicked on searched product");
+		         
+					}
+				}
             //count of cart before adding the product in cart 
             Thread.sleep(2000);
 			List<WebElement> minicartcountList = driver.findElements(By.cssSelector(".minicart-quantity"));
@@ -73,9 +79,14 @@ public class tc__BySearchingProduct_Reg_InGcAndPaypal extends baseClass {
 		            logger.info("Product is not added to cart");
 		        }
 		  
-		      //gc and paypal
-				  Gc__CC_Paypal gcAndPaypal = new Gc__CC_Paypal();
-				  gcAndPaypal.paymentProccessByGCandPaypal();
+
+			     //checkoutProcess	        
+					tc__CheckOutProcess cp = new tc__CheckOutProcess();         
+					cp.checkoutprocess();
+
+			      //gc and paypal
+					  Gc__CC_Paypal gcAndPaypal = new Gc__CC_Paypal();
+					  gcAndPaypal.paymentProccessByGCandPaypal();
 		 }else {
 		   	 Assert.fail("User not logged in");
 		   }

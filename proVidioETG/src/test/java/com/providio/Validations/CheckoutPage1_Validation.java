@@ -13,8 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import com.Logout.tc__LogOut;
 import com.github.javafaker.Faker;
+import com.providio.commonfunctionality.navigationProccess;
 import com.providio.pageObjects.CreateAccount;
 import com.providio.pageObjects.guestUserLoginPage;
 import com.providio.pageObjects.loginPage;
@@ -23,9 +23,8 @@ import com.providio.pageObjects.navigationPage;
 import com.providio.pageObjects.productListingPage;
 import com.providio.payments.size;
 import com.providio.testcases.baseClass;
+import com.providio.testcases.tc__Logout;
 import com.providio.testcases.tc__createAccount;
-
- 
 
 public class CheckoutPage1_Validation extends baseClass {
 
@@ -66,31 +65,17 @@ public class CheckoutPage1_Validation extends baseClass {
 
     public void commonScript() throws InterruptedException {
 
-        driver.get(this.baseURL);
-        logger.info("enterd into url");
-
-    //naviagated into random menu
-         navigationPage navPage= new navigationPage(driver);
-         navPage.selectRandomMenu(driver);
-         logger.info("Entered into menu");
-
-         //plp page    
-         productListingPage plp = new productListingPage(driver);
-         plp.selectProductRandom(driver);
-         logger.info("Entered into plp page");
-
- 
-
-        size s = new size();
-        s.selectSize(driver);
-
-        miniCartPage mc = new miniCartPage(driver);
+    	driver.get(baseURL);
+       navigationProccess nav= new navigationProccess();
+       nav.commonNavigationProccess();
+        
+       miniCartPage mc = new miniCartPage(driver);
 
         Thread.sleep(4000);
 
         //click on the cart button
         mc.clickcartbutton(driver);
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
         mc.clickCheckout();
         logger.info("Clicked on checkout button");
     }
@@ -160,7 +145,7 @@ public class CheckoutPage1_Validation extends baseClass {
 
          guestLoginPage.clickOnContinueAsGuest();
          logger.info("Clicked on Guest continue as guest with valid email ");
-         Thread.sleep(2000);
+       //  Thread.sleep(2000);
          WebElement paginationOfGuestUser = driver.findElement(By.xpath("//span[contains(@class,'customer-labe')]"));
              if(paginationOfGuestUser.isDisplayed()) {
                  test.pass("Successfully the page is redirected to checkout page 1");
@@ -189,7 +174,7 @@ public class CheckoutPage1_Validation extends baseClass {
         tc__createAccount ca =new  tc__createAccount();
         ca.createAccountFromCheckOut();
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         WebElement paginationOfGuestUser = driver.findElement(By.xpath("//span[contains(@class,'customer-labe')]"));
              if(paginationOfGuestUser.isDisplayed()) {
                  test.pass("Created account and Successfully the page is redirected to checkout page 1");
@@ -197,16 +182,16 @@ public class CheckoutPage1_Validation extends baseClass {
                  test.fail(" The page is not redirected to checkout page 1");
              }
 
-             Thread.sleep(3000);
+            // Thread.sleep(3000);
              guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
              guestLoginPage.clickOnBackToCart();
              logger.info("Clicked on back to cart");
 
              logger.info("Logined by creating account");
 
-             Thread.sleep(5000);
+           //  Thread.sleep(5000);
 
-             tc__LogOut logout= new tc__LogOut();
+             tc__Logout  logout= new tc__Logout();
              logout.Logout();
 
              commonScript();
@@ -224,7 +209,7 @@ public class CheckoutPage1_Validation extends baseClass {
 //        guestLoginPage.clickOnEmail(reEnterMail);
 //        logger.info("Entered email");
 
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
 
         guestLoginPage.clickOnForgotPwd();
         logger.info("Clicked on forget password");
@@ -233,14 +218,14 @@ public class CheckoutPage1_Validation extends baseClass {
         guestLoginPage.enterForgotPwdEmail();
         logger.info("Entered the email id");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         guestLoginPage.clickOnSend(driver);
         logger.info("Clicked on send button");
 
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         guestLoginPage.clickOnLoginPwd();
 
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
           System.out.println("");
     }        
 
@@ -269,7 +254,7 @@ public class CheckoutPage1_Validation extends baseClass {
         verifyLoginFailureWithEmptyPassword();
         verifyLoginWithValidCredientials();
 
-         Thread.sleep(3000);
+        // Thread.sleep(3000);
 
 //         guestLoginPage.clickOnBackToCart();
 //         logger.info("Clicked on back to cart");
@@ -291,15 +276,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("akhila.m@etg.digital");         
-        Thread.sleep(2000L);      
+      //  Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+       // Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("234sfd");
         logger.info("entered password");
-        Thread.sleep(2000L);
+       // Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);
+       // Thread.sleep(5000L);
 
         WebElement errorMessageInvalidCred = driver.findElement(By.xpath("//div[contains(text(),'This field needs at least 8 characters, 1 number, 1 lowercase letter, 1 uppercase letter, & 1 special character.')]"));      
         boolean isDisplayedinvalidcred = errorMessageInvalidCred.isDisplayed();
@@ -330,15 +315,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("");         
-        Thread.sleep(2000L);      
+      //  Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("");
         logger.info("entered password");
-        Thread.sleep(2000L);
+    //    Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);;
+      //  Thread.sleep(5000L);;
         logger.info("click on the login button without entering email and password");
         //Thread.sleep(5000L);
 
@@ -346,7 +331,7 @@ public class CheckoutPage1_Validation extends baseClass {
           WebElement errorMessageemil = driver.findElement(By.xpath("(//div[contains(text(),'This field is required.')])[1]"));
             boolean isDisplayedemail = errorMessageemil.isDisplayed();
             logger.info(isDisplayedemail);
-            Thread.sleep(5000L);
+        //    Thread.sleep(5000L);
             WebElement errorMessagepwd = driver.findElement(By.xpath("(//div[contains(text(),'This field is required.')])[2]"));
             boolean isDisplayedpwd = errorMessagepwd.isDisplayed();
             logger.info(isDisplayedpwd);
@@ -380,15 +365,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("akhila22mail.com");         
-        Thread.sleep(2000L);      
+      //  Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+       // Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("Akhireddy@97");
         logger.info("entered password");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);;
+       // Thread.sleep(5000L);;
         logger.info("click on the login button without entering email and password");
 
  
@@ -427,15 +412,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("akhila.m@etg.digital");         
-        Thread.sleep(2000L);      
+     //   Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("Akhireddy@97");
         logger.info("entered password");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);;
+      //  Thread.sleep(5000L);;
         logger.info("click on the login button without entering email and password");
         //Thread.sleep(5000);
 
@@ -470,15 +455,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("");         
-        Thread.sleep(2000L);      
+      //  Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("Akhireddy@97");
         logger.info("entered password");
-        Thread.sleep(2000L);
+     //   Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);;
+     //   Thread.sleep(5000L);;
         logger.info("click on the login button without entering email and password");
 
 
@@ -519,15 +504,15 @@ public class CheckoutPage1_Validation extends baseClass {
 
         guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
         guestLoginPage.clickOnGuestMail("akhila@22mail.com");         
-        Thread.sleep(2000L);      
+     //   Thread.sleep(2000L);      
         logger.info("entered email");
-        Thread.sleep(2000L);
+    //    Thread.sleep(2000L);
         guestLoginPage.clickOnGuestPassword("");
         logger.info("entered password");
-        Thread.sleep(2000L);
+      //  Thread.sleep(2000L);
         guestLoginPage.clickOnLogin();
         logger.info("click on the login button");
-        Thread.sleep(5000L);;
+     //   Thread.sleep(5000L);;
         logger.info("click on the login button without entering email and password");
 
  
@@ -563,31 +548,31 @@ public void verifyLoginWithValidCredientials() throws InterruptedException {
 
     guestUserLoginPage guestLoginPage = new guestUserLoginPage(driver);
     guestLoginPage.clickOnGuestMail("Upendra.y@gmail.com");         
-    Thread.sleep(2000L);      
+   // Thread.sleep(2000L);      
     logger.info("entered email");
-    Thread.sleep(2000L);
+ //   Thread.sleep(2000L);
     guestLoginPage.clickOnGuestPassword("Upendra@1218");
     logger.info("entered password");
-    Thread.sleep(2000L);
+  //  Thread.sleep(2000L);
     guestLoginPage.clickOnLogin();
     logger.info("click on the login button");
-    Thread.sleep(5000L);;
+  //  Thread.sleep(5000L);;
     logger.info("clicked on the login button with entering valid email and password");
 
  
 
-    Thread.sleep(2000);
+  //  Thread.sleep(2000);
     WebElement paginationOfGuestUser = driver.findElement(By.xpath("//span[contains(@class,'customer-labe')]"));
          if(paginationOfGuestUser.isDisplayed()) {
              test.pass("Logined Successfully ,the page is redirected to checkout page 1");
 
-             Thread.sleep(5000);
+        //     Thread.sleep(5000);
              loginPage lp = new loginPage(driver);
              lp.clickOnLogo(driver);
 
 
-            Thread.sleep(5000);
-             tc__LogOut logout= new tc__LogOut();
+           // Thread.sleep(5000);
+             tc__Logout logout= new tc__Logout();
              logout.Logout();
 
          }else {

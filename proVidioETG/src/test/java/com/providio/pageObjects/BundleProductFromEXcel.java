@@ -66,7 +66,7 @@ import com.providio.testcases.baseClass;
 		
 		public int performRandomOperations(WebDriver driver) throws InterruptedException {
 			int totalProducts=0;
-			String filePath = "C:\\Users\\user\\git\\combinedScript\\proVidioETG\\testDate\\BundleProductSkew.xlsx";
+			String filePath = "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\testDate\\BundleProductSkew.xlsx";
 			String sheetName = "SkewId";
 
 			try {
@@ -134,7 +134,7 @@ import com.providio.testcases.baseClass;
 									//product add to cart 
 									 bundleProductAddAllToCart addToCart= new bundleProductAddAllToCart();
 									 addToCart.addAllToCart(driver);
-									 test.info("Bundle product added to cart");
+									 
 								}
 								else {
 									test.fail("Searched product and the product after search are not matching");
@@ -144,8 +144,8 @@ import com.providio.testcases.baseClass;
 							 System.out.println(" After searching the product we have this in datalist"+ dataList);
 								
 							Thread.sleep(5000);
-							//operations++;
-							break;	
+							operations++;
+							//break;	
 							}
 						}
 					}

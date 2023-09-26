@@ -487,7 +487,7 @@ WebDriver lDriver;
                 WebElement paypalCheckout=parentDiv.findElement(By.xpath("//div[contains(text(),'Pay with PayPal')]"));
                 
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0,700)", "");
+                js.executeScript("window.scrollBy(0,500)", "");
                 js.executeScript("arguments[0].click();", paypalCheckout);
                
                 Thread.sleep(3000);
@@ -499,10 +499,10 @@ WebDriver lDriver;
 	                WebElement salesforcePaypalCheckout1=parentDiv.findElement(By.xpath("(//iframe[@title='PayPal'])[2]"));
 	              if(salesforcePaypalCheckout1.isDisplayed()) {
 	            	  	 Thread.sleep(3000);
-	                	 salesforcePaypalCheckout1.click();
+	            	  	 js.executeScript("arguments[0].click();", salesforcePaypalCheckout1);	                	
 	                	 System.out.println("First click");
 	              }if(salesforcePaypalCheckout1.isDisplayed()) {    
-	                  js.executeScript("arguments[0].click();", salesforcePaypalCheckout1);
+	            	  salesforcePaypalCheckout1.click();
 	                 
 	              }
 	                	
@@ -538,9 +538,9 @@ WebDriver lDriver;
 
  
 
-            @FindBy(xpath = "//button[contains(text(), 'Save and Continue')]")
+            @FindBy(xpath = "//button[contains(text(),'Save and Continue')]")
             List<WebElement> saveAndContinue;
-            
+            JavascriptExecutor js = (JavascriptExecutor) driver; 
             public void paypalPopup(WebDriver driver) throws InterruptedException {
             	
                 String mainWindowHandle = driver.getWindowHandle();
@@ -579,63 +579,34 @@ WebDriver lDriver;
                  if(loginbutton.size()>0) {
                 	 WebElement loginbutton1=driver.findElement(By.xpath("//button[contains(text(), 'Log In')]"));
 	                 loginbutton1.click();
+	                 test.info("Clicked on login button");
 	                 Thread.sleep(1000);
                  }
-                 /*
-                 WebElement visaCard=cardParentDiv.findElement(By.xpath("(//input[@class='ppvx_radio__input___2-11-1'])[3]"));
-                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                 js.executeScript("window.scrollBy(0,100)", "");
+                
                  Thread.sleep(2000);
-                 js.executeScript("arguments[0].click();", visaCard);
-                 */
-                 Thread.sleep(2000);
-                 /*
-                 if(changeTheAddressList.size()>0) {
-                	 WebElement changeTheAddress=driver.findElement(By.xpath("//button[@id='changeShippingAddress']"));
-                	 changeTheAddress.click();
-                	 
-                	// Find all the address list items
-                     List<WebElement> addressListItems = driver.findElements(By.cssSelector(".SelectShippingSidebar__sidebarListItem--7i3hP"));
-                     System.out.println("Total number of address in paypal "+ addressListItems);
-                     if(addressListItems.size()>0) {
-	                     // Generate a random index to select an address randomly
-	                     Random random = new Random();
-	                     int randomIndex = random.nextInt(addressListItems.size());
-	
-	                     // Click on the randomly selected address
-	                     WebElement randomAddressButton = addressListItems.get(randomIndex).findElement(By.tagName("button"));
-	                     randomAddressButton.click();
-                     }
-                 }*/
-                 Thread.sleep(2000);
-                 if(reviewOrderButton.size()>0) {
+                 if(reviewOrderButton.size()>0){
                 	WebElement reviewOrder=driver.findElement(By.id("payment-submit-btn"));
                 	reviewOrder.click();
                 	Thread.sleep(7000);
-                	if(reviewOrder.isDisplayed()) {
-                	      JavascriptExecutor js = (JavascriptExecutor) driver;                       
-                          js.executeScript("arguments[0].click();", reviewOrder);
-                         
-                	}
-                	
-                	
-                	//reviewOrder.click();
-                	                	
+	               	if(reviewOrderButton.size()>0 && reviewOrder.isDisplayed()) {              	                            
+	                         js.executeScript("arguments[0].click();", reviewOrder);                	
+	                 }
                  }else {
+                System.out.println(saveAndContinue.size());
                 	 if(saveAndContinue.size()>0) {
-                		 WebElement saveAndContinue1=driver.findElement(By.xpath("//button[contains(text(), 'Save and Continue')]"));
-                		 saveAndContinue1.click();
+                		 WebElement saveAndContinue1=driver.findElement(By.xpath("//button[contains(text(),'Save and Continue')]"));
+                		 js.executeScript("arguments[0].click();", saveAndContinue1);
+                		 test.info("Clicked on save and continue ");
                 	 }
                  }                 
                  
                  driver.switchTo().window(mainWindowHandle);
                  Thread.sleep(1000);
                  
-              }
-            
+                  
+            }    
             //salesfoce creditcard
-            
-            //
+
 		    @FindBy(xpath ="//input[@autocomplete='cc-number' and @inputmode='numeric']")
 		    WebElement cardNumber;
 		    public void cardNumber(WebDriver driver) throws InterruptedException {	

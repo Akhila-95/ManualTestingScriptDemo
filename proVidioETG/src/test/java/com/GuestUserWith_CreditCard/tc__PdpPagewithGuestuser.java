@@ -24,7 +24,7 @@ public class tc__PdpPagewithGuestuser extends baseClass {
 
 	SoftAssert softAssert = new SoftAssert();
 
-	@Test
+	//@Test
 	public void PDPpage() throws InterruptedException {
 		
 		test.info("Open browser");

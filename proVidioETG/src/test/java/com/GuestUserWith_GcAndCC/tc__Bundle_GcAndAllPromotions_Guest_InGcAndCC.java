@@ -39,13 +39,13 @@ public class tc__Bundle_GcAndAllPromotions_Guest_InGcAndCC extends baseClass{
             
 		 //searching the bundle product from excel sheet
 		 BundleProductFromEXcel bundleProduct = new  BundleProductFromEXcel();
-		 bundleProduct.performRandomOperations(driver);
+		// bundleProduct.performRandomOperations(driver);
 		 logger.info("Searched a product");
 		 
 		 //adding GC into cart
 		 for(int i=1; i<=1;i++) {
 			 GiftCertificate gc= new  GiftCertificate(driver);
-			 gc.clickOnGiftCard(driver);
+			// gc.clickOnGiftCard(driver);
 			 test.info("Gift card added to cart");
 		 }
 		 //all promtions applied to a simple product

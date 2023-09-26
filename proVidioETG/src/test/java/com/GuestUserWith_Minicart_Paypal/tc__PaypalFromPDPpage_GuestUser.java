@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import com.providio.pageObjects.bundleProductAddAllToCart;
 import com.providio.pageObjects.navigationPage;
 import com.providio.pageObjects.productListingPage;
 import com.providio.paymentProccess.tc__CheckOutProcessByPayPal;
@@ -23,32 +24,16 @@ public class tc__PaypalFromPDPpage_GuestUser  extends baseClass{
 			test.info("Entered into url");
 			logger.info("Enterd into url");
 			
-		//naviagated into random menu
-			navigationPage navPage= new navigationPage(driver);
-			navPage.selectRandomMenu(driver);
-			logger.info("Entered into menu");
+			// to navigate to pdp 
+			navigationToPdp() ;
 		
-		//plp page	
-			productListingPage plp = new productListingPage(driver);
-			plp.selectProductRandom(driver);
-			logger.info("Entered into plp page");
-			
-		//minicart count
-			//The cart value before adding the product to cart			
-			  Thread.sleep(2000);
-	    		 List<WebElement> minicartcountList = driver.findElements(By.cssSelector(".minicart-quantity"));
-	    		 if(minicartcountList.size()>0) {
-	    			 WebElement minicartcount = driver.findElement(By.cssSelector(".minicart-quantity"));
-	    			 String countOfMinicart = minicartcount.getText();
-
-	             // Check if the string is not empty and contains only digits
-	             if (!countOfMinicart.isEmpty() && countOfMinicart.matches("\\d+")) {
-	                minicartCountValue = Integer.parseInt(countOfMinicart);
-	                 System.out.println("The minicart count before adding the product is " + minicartCountValue);    		
-	              }
-	    		 }
+	   	  List<WebElement> bundleProduct = driver.findElements(By.cssSelector(".bundle-item"));
+	   	     if(bundleProduct.size()>0){   	    	
+	   	    	navigationToPdp() ;
+	   	     }   		
 	  //paypal buy now button
-	        
+	   	     List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
+	   	     if(pdpPage.size()>0) {
 	    		 List<WebElement> paypalbuyNowPdp =driver.findElements(By.xpath("//div[contains(@class,'salesforce-buynow-element ')]"));
 	    		 if( paypalbuyNowPdp.size()>0) {
 	    			 
@@ -63,11 +48,33 @@ public class tc__PaypalFromPDPpage_GuestUser  extends baseClass{
 		    		 }
 	    		 else {
 	    			 test.pass("Paypal buy now is only in salsforce payment not in cybersource and brain tree");
-	    		 }
-	       
-		
-	      
+	    		 }		
+	   	     }
 
 		
+	}
+	public void navigationToPdp() throws InterruptedException {
+		//naviagated into random menu
+		navigationPage navPage= new navigationPage(driver);
+		navPage.selectRandomMenu(driver);
+		logger.info("Entered into menu");
+		// to know the category entered 
+    	 List<WebElement> pageTitle = driver.findElements(By.cssSelector("h1.page-title"));
+    	 if(pageTitle.size()>0)
+    	 {
+    		 WebElement pageTitle1 = driver.findElement(By.cssSelector("h1.page-title"));
+    		 test.info("Entered into random menu " + pageTitle1.getText());
+    		 Thread.sleep(2000);
+    	 }
+	
+	//plp page	
+		productListingPage plp = new productListingPage(driver);
+		plp.selectProductRandom(driver);
+		logger.info("Entered into plp page");
+		List<WebElement> productName1 = driver.findElements(By.xpath("//h1[@class='product-name hidden-sm-down']"));
+   	     if(productName1.size()>0) {
+   	    	 WebElement productName = driver.findElement(By.xpath("//h1[@class='product-name hidden-sm-down']"));
+   	    	 test.info("productName is " +productName.getText());
+   	     }
 	}
 }

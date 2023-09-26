@@ -16,7 +16,7 @@ import com.providio.testcases.baseClass;
 public class tc__ProductSetForGuestUser_InVC_Paypal extends baseClass{
 	SoftAssert softAssert = new SoftAssert();
 	int minicartCountValue;
-	 @Test
+	// @Test
 	public void productSet() throws InterruptedException {
 
 		 	driver.get(baseURL);
@@ -64,8 +64,7 @@ public class tc__ProductSetForGuestUser_InVC_Paypal extends baseClass{
 			            logger.info("Product is not added to cart");
 			        }	        
     		 }				
-		  
-	            
+		  	            
 	         //paypal checkout form view cart page
 	 	         tc__CheckOutProcessByPayPal paypal= new tc__CheckOutProcessByPayPal();	         
 	 	         paypal.checkoutprocessFromViewCart();

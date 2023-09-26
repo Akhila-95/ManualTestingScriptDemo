@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ProvidioTestcases">
+
+  <!--  <listeners>
+		<listener class-name="com.providio.ExtentReports.ExtentReporterNG" />
+	</listeners> -->
+  <test thread-count="5" name="Automation" preserve-order="true">
+ 
+    <classes>
+    
+    	<class name= "com.providio.testcases.tc__LoginSc" />    	    	
+    	
+    	<class name= "com.RegUserWith_CreditCard.tc__BundleProductRegUser_InCC" />
+    	
+    	<class name= "com.RegUserWith_GcAndCC.tc__BySearchingProduct_RegUser_InGcAndCc" />
+    	   	   	
+    	<class name= "com.RegUserWith_GiftCard.tc__VariationProductReg_InGc" />
+    	
+    	<class name= "com.RegUserWith_MiniCart_Paypal.tc__VariationProductForReg_InMC_Paypal" />
+    	
+    	<class name= "com.RegUserWith_ViewCart_Paypal.tc__BySearchingProduct_Reg_InVC_Paypal" />
+    	
+    	<class name= "com.RegUserWith_Checkout_Paypal.tc__Bundle_GcAndAllPromotions_Reg_InCheckoutPaypal" />
+    	
+    	<class name= "com.RegUserWith_GcAndPaypal.tc__SimpleProductAndGc_Reg_InGcAndPaypal" />
+    	
+    	<class name="com.providio.testcases.tc__Logout"/>
+    	
+    	
+    	
+    	
+    	
+    	 
+    </classes>
+
+  
+  </test> <!-- Automation -->
+  
+ 
+</suite> <!-- ProvidioTestcases -->
+

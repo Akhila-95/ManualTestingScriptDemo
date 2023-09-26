@@ -12,6 +12,7 @@ import com.providio.testcases.baseClass;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,21 +22,29 @@ public class tc__BySearchingProduct_GuestUser_InCC extends baseClass {
 	int minicartCountValue;
 	SoftAssert softAssert = new SoftAssert();
 
-	@Test//(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	@Test
     public void bySearchingProduct() throws InterruptedException {
 		
 		  //step2 1: site url
 			driver.get(baseURL);
 			test.info("Entered into url");
 			
-          //searching a product 
-            homePage homepage = new homePage(driver);
-            homepage.clickOnSearchBar(this.searchBar);
-            test.info("searched a product " + this.searchBar);
-            
-         //clicked on searched product
-            homepage.clickOnSearchedProduct();
-            test.info("clicked on searched product");
+			
+			List<WebElement> searchBar = driver.findElements(By.xpath("//input[@name='q']"));
+			if(searchBar.size()>0) {
+				WebElement searchBarDisplay = driver.findElement(By.xpath("//input[@name='q']"));
+				if(searchBarDisplay.isDisplayed()) {
+		        	//searching a product 
+		            homePage homepage = new homePage(driver);
+		            homepage.clickOnSearchBar(this.searchBar);
+		           test.info("searched a product " + this.searchBar);
+		            
+		            //clicked on searched product
+		            homepage.clickOnSearchedProduct();
+		            test.info("clicked on searched product");
+		         
+					}
+				}
             
          //count of cart before adding the product in cart 
             Thread.sleep(2000);

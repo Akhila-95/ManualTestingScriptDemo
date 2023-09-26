@@ -13,9 +13,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.providio.testcases.baseClass;
+
 import freemarker.log.Logger;
 
-public class productDescriptionPage {
+public class productDescriptionPage extends baseClass {
 
 	WebDriver ldriver;
 	
@@ -23,69 +25,21 @@ public class productDescriptionPage {
 	ldriver=rdriver;
 	PageFactory.initElements(rdriver, this);
 }
-//to  select product 1
-@FindBy(xpath = "//img[@alt='Washable Wool Classic Straight Skirt']")
-WebElement product1;
 
-public void clickOnProduct1() throws InterruptedException{	
-	
-	Thread.sleep(2000);
-	 product1.click();
-	 Thread.sleep(2000);
-	
-}
-
-
-     
-	//nvaigate through breadcrumbs
-	//xapth for all breadcrumbs
-	@FindBy(xpath ="(//ol[@class='breadcrumb mb-0']//a[ contains(text(),'Womens')])[1]" )
-	WebElement allBreadCrumbs;
-	
-	
-	public void clickOnBreadCrumbs(WebDriver driver) throws InterruptedException
-	{
-//		List<WebElement> breadcrumbItems = allBreadCrumbs.findElements(By.className( ".breadcrumb-item"));
-//		Thread.sleep(2000);
-		Actions actions =new Actions(driver);
-		actions.moveToElement(allBreadCrumbs);
-		allBreadCrumbs.click();
-//		for (WebElement breadcrumbItem : breadcrumbItems) {
-//		   
-//		    breadcrumbItem.click(); // or perform other actions on the item
-//		}
-		
-	}
-	
-	
-	//count the images
-//	int count = 0;
-//	public int countElementsWithSameClassName(WebDriver driver, String className) {
-//	    List<WebElement> elements = driver.findElements(By.className("slick-paging-image-container"));
-//	    
-//	    for (WebElement element : elements) {
-//	        count++;
-//			 System.out.println(count);
-//
-//	    }
-//	    return count;
-//	
-//	}
-	
 	//forleftCarousel
 			@FindBy(xpath = "//button[@class='slick-prev slick-arrow']")
 			WebElement leftCarousel;
 			
 			public void clickOnLeftCarousel(WebDriver driver) throws InterruptedException
 			{
-				//countElementsWithSameClassName(driver, countWebElement);
-				for(int i=1;i<=2;i++)
-				{
-					leftCarousel.click();
-					
-				}
-			
-				Thread.sleep(2000);
+				if(leftCarousel.isDisplayed()) {
+					//countElementsWithSameClassName(driver, countWebElement);
+					for(int i=1;i<=2;i++)
+					{
+						leftCarousel.click();
+						
+					}
+				}								
 			}	
 			
 		
@@ -93,20 +47,20 @@ public void clickOnProduct1() throws InterruptedException{
 			@FindBy(xpath = "//button[@class='slick-next slick-arrow']")
 			WebElement rightCarousel;
 			public void clickOnRightCarousel(WebDriver driver) throws InterruptedException {
-				
-				for(int i=1;i<=2;i++)
-				{
-					rightCarousel.click();
-				
-				}
-				Thread.sleep(2000);
+				if(rightCarousel.isDisplayed()) {
+					for(int i=1;i<=2;i++)
+					{
+						rightCarousel.click();
+					
+					}
+				}				
 			}
      //write a review at top
-			@FindBy(xpath = "(//a[@class='pr-snippet-write-review-link pr-underline'])[1]")
+			@FindBy(css  = "a.pr-snippet-write-review-link")
 			List<WebElement> writeAReviewAtTop;
 			public void clickOnWriteAReviewAtTop(WebDriver driver) throws InterruptedException {
 				if(writeAReviewAtTop.size()>0) {
-					WebElement writeAReview= driver.findElement(By.xpath("(//a[@class='pr-snippet-write-review-link pr-underline'])[1]"));
+					WebElement writeAReview= driver.findElement(By.cssSelector("a.pr-snippet-write-review-link"));
 					writeAReview.click();
 					Thread.sleep(3000);
 				}else {
@@ -130,7 +84,7 @@ public void clickOnProduct1() throws InterruptedException{
 
 				 
 			}
-			//for review headline
+//for review headline
 			@FindBy(xpath = "//input[@name='Review Headline']")
 			List<WebElement> reviewHeadline;
 			
@@ -144,14 +98,14 @@ public void clickOnProduct1() throws InterruptedException{
 				}
 				
 			}
-			//for commemnts
+	//for commemnts
 			@FindBy(xpath = "//textarea[@id='pr-comments-input']")
 			WebElement comments;
 			public void clickOnComments(String comment) throws InterruptedException {
 				comments.sendKeys(comment);
 				Thread.sleep(3000);
 			}
-			//bottom line for yes
+	//bottom line for yes
 			@FindBy(xpath = "//label[text()='Yes, I would recommend this to a friend']")
 			WebElement forYes;
 			public void clickOnYes() throws InterruptedException {
@@ -159,28 +113,28 @@ public void clickOnProduct1() throws InterruptedException{
 				Thread.sleep(2000);
 			}
 			
-			//bottom line for no
-			@FindBy(xpath = "//input[@id='pr-plF1ZjMbk-PpfQ1jg06AR1']")
+	//bottom line for no
+			@FindBy(xpath = "//label[contains(text(),'No, I would not recommend this to a friend')]")
 			WebElement forNo;
 			public void clickOnNo() throws InterruptedException {
 				forYes.click();
 				Thread.sleep(2000);
 			}
-			//nickname
+	//nickname
 			@FindBy(xpath = "//input[@id='pr-name-input']")
 			WebElement nickName;
 			public void clicknickName(String name) throws InterruptedException {
 				nickName.sendKeys(name);
 				Thread.sleep(5000);
 			}
-			//location
+	//location
 			@FindBy(xpath = "//input[@id='pr-location-input']")
 			WebElement location;
 			public void clickOnLoc(String loc) throws InterruptedException  {
 				location.sendKeys(loc);
 				Thread.sleep(4000);
 			}
-			//submitreview
+	//submitreview
 			@FindBy(xpath = "//button[@type='submit' and text()='Submit Review']")
 			WebElement submitReview;
 			
@@ -193,20 +147,17 @@ public void clickOnProduct1() throws InterruptedException{
 			}
 
 		
-			//decrease the qunatity
+	//decrease the qunatity
 			@FindBy (xpath="//span[@class='qty-minus']")
 			WebElement decreaseTheQunatity;
 			public void clickOndecreaseTheQunatity() throws InterruptedException {
 				if (decreaseTheQunatity.isEnabled()) {
 					
-
 					for(int i=1;i<=5;i++) {
 						decreaseTheQunatity.click();
 						Thread.sleep(1000);
-					}
-					
-				}
-				
+					}					
+				}			
 				else {
 					System.out.println("decrease quantity is not enabled");
 				}
@@ -271,16 +222,7 @@ public void clickOnProduct1() throws InterruptedException{
 				
 				findStores.click();
 				Thread.sleep(2000);
-			}
-		//close the find stores
-		/*	@FindBy(xpath="(//span[@aria-hidden='true' and text()='×'])[1]")
-			WebElement closeFindStore;
-			public void clickOnCloseFindStore(WebDriver driver ) throws InterruptedException {
-				Thread.sleep(2000);
-				JavascriptExecutor js = (JavascriptExecutor)driver;
-				 js.executeScript("arguments[0].click();",  closeFindStore);
-				
-			}*/
+			}		
 			@FindBy(xpath = "//div[@id='findInStoreModal']")
 			WebElement closeFindStore;
 			
@@ -330,8 +272,7 @@ public void clickOnProduct1() throws InterruptedException{
 			
 	//to select addtocart
 	//cartbutton
-			
-			
+	
 				@FindBy(xpath = "//button[contains(@class,'add-to-cart')]")
 				WebElement CartButton;
 				public void clickcartbutton(WebDriver driver) throws InterruptedException{
@@ -469,7 +410,7 @@ public void clickOnProduct1() throws InterruptedException{
 				}
 				
 				//buy now button in pdp page
-				 	@FindBy(xpath = "//button[@class='buy-now btn btn-primary col-12 col-sm-6 d-none']")
+				 	@FindBy(xpath = "//button[contains(@class,'buy-now btn btn-primary')]")
 				 	WebElement buyNowButton;
 				 	public void clickOnBuyNowButton(WebDriver driver) {
 				 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -490,7 +431,7 @@ public void clickOnProduct1() throws InterruptedException{
 			 			        // Create a random instance
 			 			        Random random = new Random();
 
-			 			        // Choose a random index
+			 			        //generates a random integer between 0 and colorButtons.size()
 			 			        int randomIndex = random.nextInt(colorButtons.size());
 
 			 			        // Get the randomly selected color button
@@ -502,26 +443,30 @@ public void clickOnProduct1() throws InterruptedException{
 			 			    }
 			 			}
 			 		}else {
-			 		// Create a Select object and select the first enabled size
+			 		// fetching color element 
 					WebElement color = driver.findElement(By.xpath("//select[contains(@class,'select-color-swatch')]"));
 					
+					//selecting the color elements and getting the options
 				    Select colorElement = new Select(color);
 				    List<WebElement> options = colorElement.getOptions();
 				    
+				    //creating empty array to store enabled sizes 
 				    List<String> enabledSizes = new ArrayList<>();
 				    
+				    // we have color in  labelled  in 1st index of dropdown 
 				    int optionIndex = 0;
 				    
 				    System.out.println(options.size());
-
+				    //taking for each loop ,to check the condition  for all colors for enabled colors and index greater than zero
 				    for (WebElement option : options) {
 				    	if (optionIndex > 0 && option.isEnabled()) {					    		
-				    		String text = option.getText();
-				    		  //System.out.println(text);
-				            if (!text.isEmpty()) {      	
+				    		String text = option.getText();	
+				    		//if we get the text of enabled colors then 
+				            if (!text.isEmpty()) {      
+				            	//getting the attribute of enabled one 
 				            	String value = option.getAttribute("data-attr-value");
-				                enabledSizes.add(value);
-				                //System.out.println(value);
+				            	
+				                enabledSizes.add(value);				              
 				                option.click();
 				                Thread.sleep(5000);
 				                break; 				                
@@ -548,35 +493,7 @@ public void clickOnProduct1() throws InterruptedException{
 				 	        } else {
 				 	            System.out.println("No enabled options found.");
 				 	        }
-				 			
-				 			/*
-				 			  WebElement parentDiv = driver.findElement(By.id("width-null"));
-
-				 	            // Find all width option elements
-				 	            List<WebElement> widthElements = parentDiv.findElements(By.cssSelector(".text-center"));
-
-				 	            // Filter enabled width options
-				 	            List<WebElement> enabledWidthOptions = new ArrayList<>();
-				 	            for (WebElement widthElement : widthElements) {
-				 	                if (!widthElement.getAttribute("class").contains("disabled")) {
-				 	                    enabledWidthOptions.add(widthElement);
-				 	                }
-				 	            }
-
-				 	            // Select a random enabled width
-				 	            if (!enabledWidthOptions.isEmpty()) {
-				 	                Random random = new Random();
-				 	                int randomIndex = random.nextInt(enabledWidthOptions.size());
-				 	               enabledWidthOptions.get(randomIndex).click();
-				 	               
-				 	              
-				 	                // Get the randomly selected width element
-				 	                WebElement selectedWidthElement = enabledWidthOptions.get(randomIndex);
-
-				 	                // Click the selected width element
-				 	                selectedWidthElement.click();		 	               	
-				 	            }
-				 		*/
+				 						 			
 				 		}else {
 				 		List<WebElement> widthElementsDropDown = driver.findElements(By.xpath(".//select[@id='width-null']"));
 			    	    System.out.println(widthElementsDropDown.size());
@@ -704,4 +621,62 @@ public void clickOnProduct1() throws InterruptedException{
 				 			paypalBuyNow.click();
 				 		}
 				 	}
+				 	
+	//validations of pdp page
+					
+					//Product Name
+				    public  void productNameValidation(WebDriver driver) {
+				    
+				    WebElement productName = driver.findElement(By.xpath("//h1[contains(@class, 'product-name hidden-sm-down')]"));
+				    if (productName.isDisplayed()) {
+				    	logger.info("product Name is displayed on the page.");
+				    } else {
+				    	logger.info("product Name  is not displayed on the page.");
+				    }
+				    }
+				    
+					//Product Image
+				    public  void productImageValidation(WebDriver driver) {
+				    
+				    WebElement productImage = driver.findElement(By.xpath("(//img[@class ='d-block img-fluid'])[1]"));
+				    if (productImage.isDisplayed()) {
+				    	logger.info("product Image is displayed on the page.");
+				    } else {
+				    	logger.info("product Image is not displayed on the page.");
+				    }
+				    }
+				    
+					//Product ReviewLink
+				    public  void productReviewLinkValidation(WebDriver driver) {
+				    
+				    WebElement productreviewLink = driver.findElement(By.xpath("//a[@class ='pr-snippet-write-review-link pr-underline']"));
+				    if (productreviewLink.isDisplayed()) {
+				    	logger.info("productreviewLink is displayed on the page.");
+				    } else {
+				    	logger.info("productreviewLink is not displayed on the page.");
+				    }
+				    }
+				    
+					//Product Add to cart button
+				    public  void productAddtocartButtonValidation(WebDriver driver) {
+				    
+				    WebElement productAddtoCartButton = driver.findElement(By.xpath("//button[contains(@class, 'add-to-cart')]"));
+				    if (productAddtoCartButton.isDisplayed()) {
+				    	logger.info("productAddtoCartButton is displayed on the page.");
+				    } else {
+				    	logger.info("productAddtoCartButton is not displayed on the page.");
+				    }
+				    }
+				    
+				    //Product sepecifications
+			
+				    public  void productSepecificationsValidation(WebDriver driver) {
+				    
+				    WebElement productSpecs = driver.findElement(By.xpath("//h2[contains(@class, 'title') and text()='Description']"));
+				    if (productSpecs.isDisplayed()) {
+				    	logger.info("productSpecs are displayed on the page.");
+				    } else {
+				    	logger.info("productSpecs are not displayed on the page.");
+				    }
+				    }
 }

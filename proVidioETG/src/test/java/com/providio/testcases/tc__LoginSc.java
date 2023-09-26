@@ -26,7 +26,7 @@ public class tc__LoginSc extends baseClass {
         openBrowserandClickSignInButtonset = true;
     }
 
-    @Test(dependsOnMethods = {"com.providio.testcases.testlogin.openBrowserandClickSignInButton"})
+    @Test(dependsOnMethods = {"com.providio.testcases.testlogin.openBrowserandClickSignInButton"},priority = 1)
 	public void verifySuccessfulLogin() throws InterruptedException {
 		test.info("Verify successful login");
 		// Test Case 1: Verify successful login
@@ -34,16 +34,16 @@ public class tc__LoginSc extends baseClass {
 
         loginPage lp = new loginPage(driver);
 
-        Thread.sleep(2000L);
+        //Thread.sleep(2000L);
         lp.setEmail(name);
         logger.info("entered email");
-        Thread.sleep(2000L);
+        //Thread.sleep(2000L);
         lp.setPassword(password);
         logger.info("entered password");
-        Thread.sleep(2000L);
+       // Thread.sleep(2000L);
         lp.clickSubmit();
         logger.info("click on the submit button");
-        Thread.sleep(5000L);
+       // Thread.sleep(5000L);
 
 		WebElement loginTitle = driver.findElement(By.xpath("//h1[@class='account-page-title']"));
 		String expectedTitle = "Dashboard";

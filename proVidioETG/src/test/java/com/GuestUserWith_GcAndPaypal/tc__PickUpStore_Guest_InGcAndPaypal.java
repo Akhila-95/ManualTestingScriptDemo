@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import com.providio.commonfunctionality.Gc__CC_Paypal;
 import com.providio.commonfunctionality.Mens_Pants_PickUpInStore;
+import com.providio.commonfunctionality.findAStore;
 import com.providio.commonfunctionality.navigationProccess;
 import com.providio.pageObjects.homePage;
 import com.providio.paymentProccess.tc__CheckOutProcess;
@@ -24,50 +25,23 @@ public class  tc__PickUpStore_Guest_InGcAndPaypal extends baseClass {
 
 				driver.get(baseURL);
 				test.info("Entered into Browser");
-	   
-	    	 List<WebElement> findAStore = driver.findElements(By.xpath("//span[@class='header-store-name']"));
-	    	 if(findAStore.size()>0) {
-	    	
-	    		 test.info("Cybersource payment is activated so Bopis are activated");
-	    		 homePage hp = new homePage(driver);
-	    		 hp.findastore(driver);
-	    		 test.info("Clicked on Find a store");
-	    		 
-	    		 hp.findStore(driver);
-	    		 JavascriptExecutor js = (JavascriptExecutor) driver;
-	    	     js.executeScript("window.scrollBy(0,500)", "");
+				
+				// to pick the store
+	    	     findAStore  store = new findAStore();
+	    	     store.findStore();
 	    	     
-	    	     hp.clickCommerceCloud(driver);
-	    	     Thread.sleep(1000);
-	    	     
-	    	     
-	    	     //selecting mens-pants category
-	    	     Mens_Pants_PickUpInStore pickUpstore = new Mens_Pants_PickUpInStore();
-	    	     pickUpstore.mens_Pants_PickUpInStore(driver);
+	    	     //selects a random catgory and product add to cart
+		          navigationProccess navProccess = new navigationProccess();
+		          navProccess.commonNavigationProccess();
 
-		      //common checkoutProcess	         
+		       //common checkoutProcess	         
 				 tc__CheckOutProcess cp = new tc__CheckOutProcess();         
 				 cp.checkoutprocess();
 				
-			  //gc and paypal
+			   //gc and paypal
 				  Gc__CC_Paypal gcAndPaypal = new Gc__CC_Paypal();
 				  gcAndPaypal.paymentProccessByGCandPaypal();
-				  
-	    	 }else {
-
-	    		 
-	    	     //selecting mens-pants category
-	    	     Mens_Pants_PickUpInStore pickUpstore = new Mens_Pants_PickUpInStore();
-	    	     pickUpstore.mens_Pants_PickUpInStore(driver);
-	    	     
-	    	
-			   //common checkoutProcess	         
-				 tc__CheckOutProcess cp = new tc__CheckOutProcess();         
-				 cp.checkoutprocess();
-				 
-				//gc and paypal
-				  Gc__CC_Paypal gcAndPaypal = new Gc__CC_Paypal();
-				  gcAndPaypal.paymentProccessByGCandPaypal();
-	    	 }
+	
+	    	 
 		}
 }

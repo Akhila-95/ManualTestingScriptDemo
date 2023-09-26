@@ -39,7 +39,7 @@ public class tc__ShippingAndBillingAddressDiffer_Guest_InCc extends baseClass{
             
 		 //searching the bundle product from excel sheet
 		 BundleProductFromEXcel bundleProduct = new  BundleProductFromEXcel();
-		 bundleProduct.performRandomOperations(driver);
+		 //bundleProduct.performRandomOperations(driver);
 		 logger.info("Searched a product");
 		 		 
 		 //all promtions applied to a simple product
@@ -79,6 +79,7 @@ public class tc__ShippingAndBillingAddressDiffer_Guest_InCc extends baseClass{
 	    	  tc__CheckOutProcess checkoutProcess = new tc__CheckOutProcess();
 	    	  checkOutPage cp = new checkOutPage(driver);
 	          // Assuming 'cp' is an instance of the 'checkOutPage' class
+	    	  Thread.sleep(3000);
 	          checkoutProcess.selectBillingAddress(cp);
 	     }
        

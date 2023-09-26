@@ -19,6 +19,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.providio.payments.size;
 import com.providio.testcases.baseClass;
 
 
@@ -71,7 +72,7 @@ import com.providio.testcases.baseClass;
 		
 		public void performRandomOperations(WebDriver driver) throws InterruptedException {
 			
-			String filePath = "C:\\Users\\user\\git\\combinedScript\\proVidioETG\\testDate\\Simple Products Skew.xlsx";
+			String filePath = "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\testDate\\Simple Products Skew.xlsx";
 			String sheetName = "SkewId";
 
 			try {
@@ -120,29 +121,33 @@ import com.providio.testcases.baseClass;
 						}catch(StaleElementReferenceException e) {
 							System.out.println("Element not found: " + e.getMessage());
 						}
-						
-					
-						
+	
 							//validation of product
-							//Thread.sleep(2000);
+							Thread.sleep(2000);
 							WebElement searchedForProduct= driver.findElement(By.xpath("(//span[contains(@class,'product-id')])[2]"));
-							String searchedForText= searchedForProduct.getText();
-							System.out.println("The product ID in PDP is "+ searchedForText);
-							if(randomValue.equals(searchedForText)) {
-								test.pass(" searched for for the right product and product id is " +randomValue );
-								logger.info("Searched for right product");
-								
-								WebElement productName= driver.findElement(By.xpath("(//h1[contains(@class,'product-name')])[2]"));
-								test.info("Product name is " + productName.getText());
-								//product add to cart
-								productDescriptionPage pdp =new productDescriptionPage(driver);
-								pdp.clickcartbutton(driver);
+							String searchedForText1= searchedForProduct.getText();
+							System.out.println("The product ID in PDP is "+ searchedForText1);
+							if(searchedForProduct.isDisplayed()) {
+								String searchedForText= searchedForProduct.getText();
+								System.out.println("The product ID in PDP is "+ searchedForText);
+								if(randomValue.equals(searchedForText)) {
+									test.pass(" searched for for the right product and product id is " +randomValue );
+									logger.info("Searched for right product");
+									
+									WebElement productName= driver.findElement(By.xpath("(//h1[contains(@class,'product-name')])[2]"));
+									test.info("Product name is " + productName.getText());
+									// size selection
+							   		 List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
+							   		 if( pdpPage.size()>0) {
+									          size s = new size();			        
+									          s.selectSize(driver);
+								    		 }
+								}
+								else {
+									test.fail("Searched product and the product after search are not matching");
+									logger.info("Searched product and the product after search are not matching");
+								}
 							}
-							else {
-								test.fail("Searched product and the product after search are not matching");
-								logger.info("Searched product and the product after search are not matching");
-							}
-							
 						
 							dataList.remove(randomValue);
 							System.out.println(" After searching the product we have this in datalist"+ dataList);

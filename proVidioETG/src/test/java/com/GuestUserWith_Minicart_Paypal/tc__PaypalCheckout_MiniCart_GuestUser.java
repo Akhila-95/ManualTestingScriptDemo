@@ -19,13 +19,17 @@ public class tc__PaypalCheckout_MiniCart_GuestUser extends baseClass {
 @Test
 	public void paypalCheckout_MiniCart() throws InterruptedException {
 		
-			     driver.get(baseURL);
+			     driver.get("https://zzqi-002.dx.commercecloud.salesforce.com/s/RefArch/electronics/ipod%20%26%20mp3%20players/apple-ipod-shuffleM.html?lang=en_US");
 		         logger.info("enterd into url");
 		       
 		     //selects a random catgory and product add to cart
-		         navigationProccess navProccess = new navigationProccess();
-		         navProccess.commonNavigationProccess();
-		    
+		         //navigationProccess navProccess = new navigationProccess();
+		      //   navProccess.commonNavigationProccess();		    
+		     List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
+		   		 if( pdpPage.size()>0) {
+			          size s = new size();			        
+			          s.selectSize(driver);
+		    		 }   
 		         
 		         
 	         //checkout from mini cart by paypal	        

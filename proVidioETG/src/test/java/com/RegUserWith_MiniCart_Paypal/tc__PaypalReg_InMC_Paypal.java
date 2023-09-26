@@ -19,7 +19,11 @@ public class tc__PaypalReg_InMC_Paypal extends baseClass {
 	          navigationProccess navProccess = new navigationProccess();
 	          navProccess.commonNavigationProccess();
 	          
-	  
+	          //common checkout process
+	             tc__CheckOutProcess cp = new tc__CheckOutProcess();        
+	             cp.checkoutprocess();
+	          
+	          
 		 //checkout from mini cart by paypal	        
 	         tc__CheckOutProcessByPayPal checkOutProcessByPayPal= new tc__CheckOutProcessByPayPal();
 	         checkOutProcessByPayPal. checkoutprocessFromMiniCart();

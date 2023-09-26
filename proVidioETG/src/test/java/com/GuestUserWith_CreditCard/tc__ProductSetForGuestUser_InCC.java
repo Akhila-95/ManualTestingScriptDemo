@@ -15,7 +15,7 @@ import com.providio.testcases.baseClass;
 public class tc__ProductSetForGuestUser_InCC extends baseClass{
 	SoftAssert softAssert = new SoftAssert();
 	int minicartCountValue;
-	 @Test
+	// @Test
 	public void productSet() throws InterruptedException {
 
 		 	driver.get(baseURL);

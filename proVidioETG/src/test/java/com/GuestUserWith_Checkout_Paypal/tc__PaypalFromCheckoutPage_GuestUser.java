@@ -20,13 +20,18 @@ public class tc__PaypalFromCheckoutPage_GuestUser extends baseClass {
 	public void paypalFromCheckoutPage() throws InterruptedException {
 	
 	       
-			  driver.get(baseURL);	
+			  driver.get("https://zzqi-002.dx.commercecloud.salesforce.com/s/RefArch/electronics/ipod%20%26%20mp3%20players/apple-ipod-shuffleM.html?lang=en_US");	
 			  test.info("Entered into url");
 		   
 		  // selects a random catgory and product add to cart
-	          navigationProccess navProccess = new navigationProccess();
-	          navProccess.commonNavigationProccess();
-	          
+	       //   navigationProccess navProccess = new navigationProccess();
+	        //  navProccess.commonNavigationProccess();
+	         
+			  List<WebElement> pdpPage = driver.findElements(By.xpath("//button[contains(@class,'add-to-cart btn btn-primary')]"));
+		   		 if( pdpPage.size()>0) {
+				          size s = new size();			        
+				          s.selectSize(driver);
+			    		 }
 	        
 		  // common checkoutProcess	         
 			 tc__CheckOutProcess cp = new tc__CheckOutProcess();         

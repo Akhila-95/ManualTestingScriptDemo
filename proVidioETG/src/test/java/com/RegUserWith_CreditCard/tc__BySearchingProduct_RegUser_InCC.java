@@ -25,15 +25,21 @@ public class tc__BySearchingProduct_RegUser_InCC extends baseClass {
     public void bySearchingProduct() throws InterruptedException {
 		if(isLoggedIn) {
 			
-			
-        	//searching a product 
-            homePage homepage = new homePage(driver);
-            homepage.clickOnSearchBar(this.searchBar);
-           test.info("searched a product " + this.searchBar);
-            
-            //clicked on searched product
-            homepage.clickOnSearchedProduct();
-            test.info("clicked on searched product");
+			List<WebElement> searchBar = driver.findElements(By.xpath("//input[@name='q']"));
+			if(searchBar.size()>0) {
+				WebElement searchBarDisplay = driver.findElement(By.xpath("//input[@name='q']"));
+				if(searchBarDisplay.isDisplayed()) {
+		        	//searching a product 
+		            homePage homepage = new homePage(driver);
+		            homepage.clickOnSearchBar(this.searchBar);
+		           test.info("searched a product " + this.searchBar);
+		            
+		            //clicked on searched product
+		            homepage.clickOnSearchedProduct();
+		            test.info("clicked on searched product");
+		         
+					}
+				}
             
             //count of cart before adding the product in cart 
             Thread.sleep(2000);

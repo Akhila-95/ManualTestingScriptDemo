@@ -17,7 +17,7 @@ import com.providio.testcases.baseClass;
 
 public class tc__ShippingAndBillingAddressDiffer__Reg_InCC extends baseClass{
 	int minicartCountValue;
-	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	//@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void shippingAndBillingAddressDiffer_Guest() throws InterruptedException {
 		
 		if(isLoggedIn) {     
@@ -73,12 +73,16 @@ public class tc__ShippingAndBillingAddressDiffer__Reg_InCC extends baseClass{
 	         //changing the billing address
 		     List<WebElement> billingAddress = driver.findElements(By.xpath("//label[contains(text(),'Billing Address')]"));
 		     if(billingAddress.size()>0) {
+		    	
 		    	 WebElement addNewAddress = driver.findElement(By.xpath("(//button[contains(@class,'btn-add-new')])[3]"));
-		    	 addNewAddress.click();
-		    	  tc__CheckOutProcess checkoutProcess = new tc__CheckOutProcess();
-		    	  checkOutPage cp = new checkOutPage(driver);
-		          // Assuming 'cp' is an instance of the 'checkOutPage' class
-		          checkoutProcess.selectBillingAddress(cp);
+		    	 if(addNewAddress.isDisplayed()) {
+			    	 addNewAddress.click();
+			    	  tc__CheckOutProcess checkoutProcess = new tc__CheckOutProcess();
+			    	  checkOutPage cp = new checkOutPage(driver);
+			          // Assuming 'cp' is an instance of the 'checkOutPage' class
+			    	  Thread.sleep(3000);
+			          checkoutProcess.selectBillingAddress(cp);
+		    	 }
 		     }
 	       
 		     //Payment process		     

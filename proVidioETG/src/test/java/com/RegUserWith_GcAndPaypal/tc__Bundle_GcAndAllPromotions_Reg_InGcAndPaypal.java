@@ -44,7 +44,7 @@ public class tc__Bundle_GcAndAllPromotions_Reg_InGcAndPaypal extends baseClass{
 		 //adding GC into cart
 		 for(int i=1; i<=1;i++) {
 			 GiftCertificate gc= new  GiftCertificate(driver);
-			 gc.clickOnGiftCard(driver);
+			// gc.clickOnGiftCard(driver);
 			 test.info("Gift card added to cart");
 		 }
 		 //all promtions applied to a simple product

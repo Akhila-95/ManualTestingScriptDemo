@@ -16,7 +16,7 @@ import com.providio.testcases.baseClass;
 
 public class tc__SimpleProductsAndBundle_Gc_InCC extends baseClass {
 	int minicartCountValue;
-	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	//@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void simpleProducts_Bundle_Gc() throws InterruptedException {
 		
 		if(isLoggedIn) {

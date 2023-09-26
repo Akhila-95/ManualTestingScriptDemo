@@ -13,7 +13,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class productListingPage {
+import com.providio.testcases.baseClass;
+
+public class productListingPage extends baseClass{
 WebDriver lDriver;
 
 
@@ -22,9 +24,7 @@ WebDriver lDriver;
 		lDriver=rDriver;
 		PageFactory.initElements(rDriver, this);
 	}
-	
-	
-	 
+
 	  //color
 	  //beige
 		@FindBy(xpath ="//span[@id ='swatch-circle-beige-assistive']")
@@ -187,8 +187,7 @@ WebDriver lDriver;
 		    	
 		    	 optionIndex++;
 		    }
-//			JavascriptExecutor js = (JavascriptExecutor) driver; 
-//	        js.executeScript("arguments[0].click();", sizes);
+
 	    	Thread.sleep(3000);
 		}
 		
@@ -305,18 +304,10 @@ WebDriver lDriver;
 		@FindBy(xpath ="(//div[@class='d-flex flex-row']/a[@class='quickview hidden-md-down btn btn-outline-primary w-100'])[1]")
 		WebElement Quickshop;
 		public void selectthequickshope(WebDriver driver) throws InterruptedException{
-			
-			
-//			Actions action = new Actions(driver);
-//			action.moveToElement(Quickshop).perform();
-			
+
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Quickshop);
-//			JavascriptExecutor js = (JavascriptExecutor) driver; 
-//			js.executeScript("arguments[0].click();", Quickshop);
-			
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
-			executor.executeScript("arguments[0].click();", Quickshop);
-			
+			executor.executeScript("arguments[0].click();", Quickshop);			
 	    	//Quickshop.click();
 	    	Thread.sleep(3000);
 		}
@@ -326,19 +317,12 @@ WebDriver lDriver;
 	        Random random = new Random();
 	        List<WebElement> products = driver.findElements(By.xpath("//a[@class ='tile-img-contain']"));
 	        int totalProductcount = products.size();
-	        if(totalProductcount>0)
-	        {
+	        if(totalProductcount>0){
 	        int randomselectProduct = random.nextInt(totalProductcount) + 1;
-//	        ScrollBarfuctions sbf = new ScrollBarfuctions();
-//	        sbf.scrollmedium(driver);
-	        WebElement RandomSelectProductFormPLP = driver.findElement(By.xpath("(//a[@class ='tile-img-contain'])[" + randomselectProduct + "]"));
-	        
+	        WebElement RandomSelectProductFormPLP = driver.findElement(By.xpath("(//a[@class ='tile-img-contain'])[" + randomselectProduct + "]"));	        
 	        JavascriptExecutor js = (JavascriptExecutor)driver;
             js.executeScript("arguments[0].click();", RandomSelectProductFormPLP);
-            
-            
-	        }
-	      
+	        }	      
 	    }
 
 	    public void selectAllProductsFormPLP(WebDriver driver) throws InterruptedException {
@@ -363,19 +347,50 @@ WebDriver lDriver;
 	            }
 	        }
 	        
-	    }	    
-	            @FindBy(xpath = "(//div[@class='product'])[3]")
-				WebElement product;				
-				public void clickOnProduct(WebDriver driver) throws InterruptedException {			
-					Thread.sleep(5000);				
-					Actions action = new Actions(driver);				
-					action.moveToElement(product).perform();				
-					Thread.sleep(5000);				
-					JavascriptExecutor js = (JavascriptExecutor)driver;				
-					// js.executeScript("arguments[0].click();", product);				
-					product.click();
-
- 
-
-}
+	    }	 
+	    
+	  //validations
+	  		//Name
+	  		 public  void name(WebDriver driver) throws InterruptedException {
+	  			 WebElement Name = driver.findElement(By.xpath("//h1[contains(@class, 'page-title')]"));
+	  			    if (Name.isEnabled()) {
+	  			    	logger.info("catagory name is displayed on the page");
+	  			    } else {
+	  			    	logger.info("catagory name is not displayed on the page");
+	  			    }
+	  			    Thread.sleep(2000);
+	  		 }
+	    //BreadCrumbs
+		 public  void BreadCrumbs(WebDriver driver) throws InterruptedException {
+			 WebElement breadCrumbs = driver.findElement(By.xpath("//ol[@class='breadcrumb mb-0']"));
+			    if (breadCrumbs.isEnabled()) {
+			    	logger.info("BreadCrumbs are displayed on the page");
+			    } else {
+			    	logger.info("BreadCrumbs are not displayed on the page");
+			    }
+			    Thread.sleep(2000);
+		 }
+		 
+		 //Filters
+		 public  void Filters(WebDriver driver) throws InterruptedException {
+			 WebElement filters = driver.findElement(By.xpath("//span[@class='hide-title']"));
+			    if (filters.isEnabled()) {
+			    	logger.info("Filters are displayed on the page");
+			    } else {
+			    	logger.info("Filters are not displayed on the page");
+			    }
+			    Thread.sleep(2000);
+		 }
+		 
+		 //products
+			public void Products(WebDriver driver) throws InterruptedException {
+				List<WebElement> products = driver.findElements(By.xpath("//a[@class='nav-link dropdown-toggle text-uppercase font-weight-bold level-1']"));
+			    int count = products.size();
+			    if(count>0) {
+			    	 logger.info("products are displayed on the page");
+			    } else {
+			    	logger.info("products are not displayed on the page");
+			    }
+			    Thread.sleep(2000);
+			}
 }

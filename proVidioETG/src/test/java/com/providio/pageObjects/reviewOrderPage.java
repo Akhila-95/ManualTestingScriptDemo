@@ -23,28 +23,22 @@ WebDriver lDriver;
     	JavascriptExecutor js = (JavascriptExecutor) driver;     
     	js.executeScript("arguments[0].click();",reviewOrderPage);
     	Thread.sleep(2000);
-    	if(reviewOrderPage.isDisplayed()) {
+    	/*if(reviewOrderPage.isDisplayed()) {
     	 reviewOrderPage.click();
-    	}
+    	}*/
     }
     //In checkout page if the it will check the button of revieworder and place order buttons
-	@FindBy(xpath ="//button[contains(@class,' place-order')]")
+	@FindBy(css =".place-order")
 	WebElement placetheorderwithJsExuter;
     public void clickonplaceorderwithJsExuter(WebDriver driver) throws InterruptedException {
-    	 if(driver.findElements(By.xpath("//button[contains(@class,'place-order')]")).size()!=0) {
-	    	try {
-	    	//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", placetheorderwithJsExuter);
-	    	Thread.sleep(4000);
-	
-	    	JavascriptExecutor js = (JavascriptExecutor) driver;     
-	    	placetheorderwithJsExuter.click();
-	    
-	    
-	    	}catch(Exception e) {
-	    		Thread.sleep(4000);
-	    		JavascriptExecutor js = (JavascriptExecutor) driver; 
+    	 if(driver.findElements(By.cssSelector(".place-order")).size()!=0) {
+    	
+    		 	JavascriptExecutor js = (JavascriptExecutor) driver;      		  
+	    		js.executeScript("window.scrollBy(0,300)", "");
+	    		Thread.sleep(4000);	    
 	    		js.executeScript("arguments[0].click();", placetheorderwithJsExuter);
-	    	}
+	
+	    	
 	      }
     } 
  

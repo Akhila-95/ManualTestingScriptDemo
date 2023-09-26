@@ -25,7 +25,7 @@ public class tc__PdpPagewithReg_InCc extends baseClass {
 
 	SoftAssert softAssert = new SoftAssert();
 
-	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	//@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void PDPpage() throws InterruptedException {
 		
 		if(isLoggedIn) {

@@ -119,8 +119,9 @@ public class GiftCertificate {
        // Thread.sleep(1000);
         confirmFriendsMail.sendKeys(fakeEmail);
 	
-
-        addToCart.click();
+    					
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",  addToCart);  
+		addToCart.click();
         Thread.sleep(3000);
 	
 	}

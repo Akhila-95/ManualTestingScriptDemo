@@ -46,21 +46,8 @@ public class tc__PaymentProccessByGC_CC_Paypal extends baseClass{
 		return data;
 	}
 	public void paymentBySemiGC () throws InterruptedException {
-		
-	/*	double halfPrice=0;
-        
-        //get the total price and removed the dallar and commas
-        WebElement totalPrice= driver.findElement(By.xpath("//span[@class='grand-total-sum']"));
-        String totalPriceText = totalPrice.getText().replace("$", "").replace(",", ""); // Remove "$" and commas
-        double totalPricAmount = Double.parseDouble(totalPriceText);
-        
-        System.out.println("Total price is " + totalPricAmount);
-        // Calculate half of the total price
-        
-        halfPrice = totalPricAmount/ 2;
-        System.out.println("The half price is " +halfPrice);
-       */
-		String filePath = "C:\\Users\\user\\git\\combinedScript\\proVidioETG\\testDate\\GiftCertificateCodesPaypal_CC.xlsx";
+
+		String filePath = "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\testDate\\GiftCertificateCodesPaypal_CC.xlsx";
 	    String sheetName = "GC_Codes";
 
 	    try {
@@ -101,7 +88,7 @@ public class tc__PaymentProccessByGC_CC_Paypal extends baseClass{
 		             test.info("Verifying check balance button");
 		            
 		                // Scroll down by 500 pixels
-		             	js.executeScript("window.scrollBy(0, 500);");         
+		             	//js.executeScript("window.scrollBy(0, 100);");         
 		                js.executeScript("arguments[0].click();",checkBalButton);
 		                //checkBalButton.click();
 		                Thread.sleep(2000);
@@ -125,8 +112,7 @@ public class tc__PaymentProccessByGC_CC_Paypal extends baseClass{
 			            
 		                WebElement applyGiftCard = driver.findElement(By.xpath("//button[@value='submit-gifrcert']"));
 		                Thread.sleep(3000);	              
-		                // Scroll down by 500 pixels
-		                js.executeScript("window.scrollBy(0, 200);");
+		           
 		             
 		                // apply button validation
 		                test.info("Verifying apply button is selected");

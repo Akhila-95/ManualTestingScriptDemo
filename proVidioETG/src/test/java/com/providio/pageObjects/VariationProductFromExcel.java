@@ -63,11 +63,10 @@ public class VariationProductFromExcel extends baseClass{
 
 		return randomValue;
 	}
-
 	
 	public void performRandomOperations(WebDriver driver) throws InterruptedException {
 		
-		String filePath = "C:\\Users\\user\\git\\combinedScript\\proVidioETG\\testDate\\VariationProductSkew.xlsx";
+		String filePath = "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\testDate\\VariationProductSkew.xlsx";
 		String sheetName = "SkewId";
 
 		try {

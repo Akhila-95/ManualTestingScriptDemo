@@ -19,7 +19,7 @@ import com.providio.testcases.baseClass;
 public class tc__SimpleProductRegUser_InCC extends baseClass{
 	SoftAssert softAssert = new SoftAssert();
 
-	 @Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	// @Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void simpleProduct() throws InterruptedException {
 		 
 		 

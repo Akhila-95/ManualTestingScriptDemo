@@ -89,15 +89,14 @@ public class Checkout_Validation extends baseClass {
 		        WebElement checkOutProcess = driver.findElement(By.xpath("//a[contains(@class, 'checkout-btn') and contains(@class, 'btn-primary') and contains(text(), 'Checkout')]"));
 		        boolean displaycheckOut = checkOutProcess.isDisplayed();
 		        logger.info(displaycheckOut);
-		//        WebElement paypal = driver.findElement(By.xpath("//div[contains(@class, 'paypal-button') and contains(@class, 'paypal-button-number-0') and contains(@class, 'paypal-button-layout-vertical') and contains(@class, 'paypal-button-shape-rect') and contains(@class, 'paypal-button-env-sandbox') and contains(@class, 'paypal-button-color-gold') and contains(@class, 'paypal-button-text-color-black') and contains(@class, 'paypal-logo-color-blue') and @role='link' and @aria-label='PayPal Checkout']"));
-		//        boolean displaypaypal = paypal.isDisplayed();
+		
 		        if(productsinthecart.size()>0 && displaycartbutton && displaycheckOut ) {
-		        	test.pass("Successfully displayed the viewcart, checkout, paypal buttons and products, The number of products are: "+ productsinthecart.size());
-		            logger.info("Successfully displayed the viewcart, checkout, paypal buttons and products");
+		        	test.pass("Successfully displayed the viewcart, checkout, and products, The number of products are: "+ productsinthecart.size());
+		            logger.info("Successfully displayed the viewcart, checkout,  and products");
 		        	
 		        }else {
-		            test.fail(" Not displayed the viewcart, checkout, paypal buttons and products");
-		            logger.info("Not displayed the viewcart, checkout, paypal buttons and products");
+		            test.fail(" Not displayed the viewcart, checkout, and products");
+		            logger.info("Not displayed the viewcart, checkout, and products");
 		        }
 	    	 }
 	      }

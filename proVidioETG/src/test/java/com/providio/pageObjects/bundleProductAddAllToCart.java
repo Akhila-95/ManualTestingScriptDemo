@@ -15,8 +15,6 @@ public class bundleProductAddAllToCart extends baseClass{
 	public void addAllToCart(WebDriver driver) throws InterruptedException {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-	
- 		WebElement elementXPath = driver.findElement(By.xpath("//div[@class='col-12 col-sm-6 offset-sm-6 bundle-footer']"));
  		WebElement elementCss = driver.findElement(By.cssSelector("div.bundle-footer"));
  		List<WebElement>  inStock =elementCss.findElements(By.xpath("//div[contains(text(), 'In Stock')]"));
 
@@ -27,10 +25,6 @@ public class bundleProductAddAllToCart extends baseClass{
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addAllToCartElement);
 				if(!addAllToCartElement.isEnabled()) {
 					test.info("product is out of stock searching for new product");
-//					BundleProductFromEXcel bundleProduct = new  BundleProductFromEXcel();
-//					bundleProduct.performRandomOperations(driver);
-//					addAllToCart(driver);
-					
 				}else {
 					Thread.sleep(5000);
 					js.executeScript("arguments[0].click();", addAllToCartElement);

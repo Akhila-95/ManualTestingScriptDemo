@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import com.providio.commonfunctionality.Gc__CC_Paypal;
 import com.providio.commonfunctionality.Mens_Pants_PickUpInStore;
+import com.providio.commonfunctionality.findAStore;
 import com.providio.commonfunctionality.navigationProccess;
 import com.providio.pageObjects.homePage;
 import com.providio.paymentProccess.tc__CheckOutProcess;
@@ -23,43 +24,22 @@ public class  tc__PickUpStore_Guest_InVC_Paypal extends baseClass {
 	@Test//(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void paypalFromCheckoutPage() throws InterruptedException {	
 
-				driver.get(baseURL);
-				test.info("Entered into Browser");
-	   
-	    	 List<WebElement> findAStore = driver.findElements(By.xpath("//span[@class='header-store-name']"));
-	    	 if(findAStore.size()>0) {
-	    	
-	    		 test.info("Cybersource payment is activated so Bopis are activated");
-	    		 homePage hp = new homePage(driver);
-	    		 hp.findastore(driver);
-	    		 test.info("Clicked on Find a store");
-	    		 
-	    		 hp.findStore(driver);
-	    		 JavascriptExecutor js = (JavascriptExecutor) driver;
-	    	     js.executeScript("window.scrollBy(0,500)", "");
-	    	     
-	    	     hp.clickCommerceCloud(driver);
-	    	     Thread.sleep(1000);
-	    	     
-	    	     
-	    	     //selecting mens-pants category
-	    	     Mens_Pants_PickUpInStore pickUpstore = new Mens_Pants_PickUpInStore();
-	    	     pickUpstore.mens_Pants_PickUpInStore(driver);
-	    	     
+				
+			//entered into url
+			driver.get(baseURL);
+			test.info("Entered into Browser");
+			
+			// to pick the store
+		     findAStore  store = new findAStore();
+		     store.findStore();
+		     
+		     //selects a random catgory and product add to cart
+	          navigationProccess navProccess = new navigationProccess();
+	          navProccess.commonNavigationProccess();
 
-	    	  //paypal checkout form view cart page
-	 	         tc__CheckOutProcessByPayPal paypal= new tc__CheckOutProcessByPayPal();	         
-	 	         paypal.checkoutprocessFromViewCart();
-				  
-	    	 }else {  	  
-	    	     //selecting mens-pants category
-	    	     Mens_Pants_PickUpInStore pickUpstore = new Mens_Pants_PickUpInStore();
-	    	     pickUpstore.mens_Pants_PickUpInStore(driver);
-	    	     
-	    	     
-	    	   //paypal checkout form view cart page
-	 	         tc__CheckOutProcessByPayPal paypal= new tc__CheckOutProcessByPayPal();	         
-	 	         paypal.checkoutprocessFromViewCart();
-	    	 }
+    	   //paypal checkout form view cart page
+ 	         tc__CheckOutProcessByPayPal paypal= new tc__CheckOutProcessByPayPal();	         
+ 	         paypal.checkoutprocessFromViewCart();
+	    	
 		}
 }

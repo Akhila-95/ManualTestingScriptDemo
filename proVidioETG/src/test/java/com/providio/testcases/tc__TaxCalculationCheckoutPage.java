@@ -47,16 +47,11 @@ public class tc__TaxCalculationCheckoutPage extends baseClass{
     //promocode
 
 //    WebElement shippingDiscount = driver.findElement(By.xpath("//span[@class ='applied-promotion-discount']"));
-
 //    String shipingValueText = shippingDiscount.getText();
-
 //    String numericValue = shipingValueText.substring(1);
-
-//    Float shippingDiscountValue = Float.parseFloat(numericValue);
- 
+//    Float shippingDiscountValue = Float.parseFloat(numericValue); 
 //    logger.info(shippingDiscountValue);
-
-    //# the below function purpose subtotal value
+    // the below function purpose subtotal value
     
     //Name
     WebElement subTotal11 = driver.findElement(By.xpath("//span[contains(text(),'Subtotal')]"));
@@ -81,7 +76,6 @@ public class tc__TaxCalculationCheckoutPage extends baseClass{
     //product discount value
     //#Below fucntion is to calculate the count of the number of productdiscounts are there because if 0 means not excuting the code greater one means excute
     List<WebElement> productDiscountNamesize = driver.findElements(By.xpath("//p[contains(text(),'Product Discount')]"));
-    List<WebElement> checkout = driver.findElements(By.xpath("//a[contains(@class,'btn btn-primary btn')]"));
     int productDiscountNamesizecount = productDiscountNamesize.size();
     logger.info(productDiscountNamesizecount);
 

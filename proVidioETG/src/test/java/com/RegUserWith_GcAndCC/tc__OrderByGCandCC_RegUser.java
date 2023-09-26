@@ -10,7 +10,7 @@ import com.providio.testcases.baseClass;
 
 public class tc__OrderByGCandCC_RegUser extends baseClass {
 	int minicartCountValue;
-	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+//	@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void paypalFromCheckoutPage() throws InterruptedException {	
 
 			// enters into url

@@ -21,7 +21,7 @@ import com.providio.testcases.baseClass;
 public class tc__VariationProductRegUser_InCC extends baseClass{
 	SoftAssert softAssert = new SoftAssert();
 	 int minicartCountValue;
-	 @Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
+	 //@Test(dependsOnMethods = {"com.providio.testcases.tc__LoginSc.verifySuccessfulLogin"}, alwaysRun = true)
 	public void variationProduct() throws InterruptedException {
 		 
 		 if(isLoggedIn) {

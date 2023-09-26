@@ -12,6 +12,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.PageLoadStrategy;
@@ -38,7 +39,7 @@ import com.providio.utilities.reportToMail;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 
 public class baseClass {
@@ -100,7 +101,7 @@ public class baseClass {
 	protected static boolean isLoggedIn=false;
 	
 	private static ExtentReports report = new ExtentReports();
-    private ExtentSparkReporter reporter = new ExtentSparkReporter("C:\\Users\\user\\git\\combinedScript\\proVidioETG\\Reports\\ProvidioTestReport.html");
+    private ExtentSparkReporter reporter = new ExtentSparkReporter("C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\Reports\\ProvidioTestReport.html");
 	
 	//Reporting
 	//static ExtentReports report;
@@ -109,8 +110,7 @@ public class baseClass {
 	@BeforeSuite
     public void setUpforReport() {
         report = new ExtentReports();
-        report.attachReporter(reporter);
-        
+        report.attachReporter(reporter);        
        
 		initializeDriver() ;
 
@@ -195,14 +195,14 @@ public class baseClass {
 		   report.flush();
 		   
 
-		   driver.get("C:\\Users\\user\\git\\combinedScript\\proVidioETG\\Reports\\ProvidioTestReport.html");
+		   driver.get("C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\Reports\\ProvidioTestReport.html");
 			driver.manage().window().maximize();
 			Thread.sleep(5000);
 			// Take a screenshot of the entire browser window
 			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
 			// Define the destination path for the screenshot
-			String screenshotPath = "C:\\Users\\user\\git\\combinedScript\\proVidioETG\\Reports\\ReportsScreenshot.png";
+			String screenshotPath = "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\Reports\\ReportsScreenshot.png";
 			// Save the screenshot to the specified path
 			FileUtils.copyFile(screenshot, new File(screenshotPath));
 
@@ -220,25 +220,22 @@ public class baseClass {
 	   //@BeforeTest
 	   public void initializeDriver() {
 	
-		   ChromeOptions co = new ChromeOptions();
-		   co.addArguments("--remote-allow-origins=*");
+		    ChromeOptions co = new ChromeOptions();
+		   // co.addArguments("--remote-allow-origins=*");
+		    co.addArguments("--incognito");
 	        driver = new ChromeDriver(co);
-	        driver.manage().window().maximize();
+	      	 driver.manage().window().maximize();
 
-	        // Clear all cookies
-	      //  driver.manage().deleteAllCookies();
-	        //to delete the cookies before starting the suite
-	       
+	      	co.addArguments("--disable-extensions"); // Disable extensions
+	        co.addArguments("--disable-plugins-discovery"); // Disable plugins	       
+	        driver.manage().deleteAllCookies();  
 	    }
 		
 	   
 	   //validate the browser is running or not
 	   private boolean isBrowserRunning() {
 		   try {
-		        driver.getTitle();
-
-		        // Clear all cookies
-		       // driver.manage().deleteAllCookies();
+		        driver.getTitle();	   
 		        return true;
 		    } catch (NoSuchWindowException e) {
 		        return false;
@@ -268,9 +265,9 @@ public class baseClass {
 			if (!isBrowserRunning()) {
 				
 				 String[] suiteFiles = {
-				            "C:\\Users\\user\\git\\MuskuAkhilaRepo16\\proVidioETG\\Excutingalltestcases.xml",
+				            "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\GuestUser.xml",
 
-				            // Add more suite file paths if needed
+				        //  "C:\\Users\\user\\git\\RegcombinedScript\\proVidioETG\\RegisteredUser.xml"
 				        };
 				        executeTestSuite(suiteFiles);
 	            
